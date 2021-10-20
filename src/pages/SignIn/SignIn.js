@@ -1,18 +1,16 @@
-import AppTitle from "../components/AppTitle";
-import Input from "../components/Input";
-import RectangularButton from "../components/RectangularButton";
-import UnderButtonMessage from "../components/UnderButtonMessage";
+import AppTitle from "../../components/AppTitle";
+import Input from "../../components/Input";
+import RectangularButton from "../../components/RectangularButton";
+import UnderButtonMessage from "../../components/UnderButtonMessage";
 
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
-export default function SignUpPage() {
+export default function SignInPage() {
     const isLoading = false;
     const inputs = [
-        { placeholder: "Nome", type: "text"},
         { placeholder: "E-mail", type: "text"},
         { placeholder: "Senha", type: "password" },
-        { placeholder: "Confirme a senha", type: "password" },
     ];
     const browsingHistory = useHistory();
 
@@ -28,12 +26,12 @@ export default function SignUpPage() {
                 />
             )}
             <RectangularButton 
-                text = { "Cadastrar" }
+                text = { "Entrar" }
                 isLoading = { isLoading }
             />
             <UnderButtonMessage 
-                text = "Já tem uma conta? Entre agora!"
-                onClick = { () => browsingHistory.push("/") }
+                text = "Primeira vez? Cadastre-se!"
+                onClick = { () => browsingHistory.push("/sign-up") }
             />
         </Wrapper>
     );

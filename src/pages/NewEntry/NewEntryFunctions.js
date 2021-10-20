@@ -1,0 +1,3 @@
+function ValidateAndSendValues(newEntry) {
+    
+}

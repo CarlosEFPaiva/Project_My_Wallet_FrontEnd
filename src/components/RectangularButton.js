@@ -16,7 +16,7 @@ export default function RectangularButton({text, isLoading, onClick}) {
 
 const Wrapper = styled.button`
     width: 100%;
-    height: 56px;
+    height: 46px;
     background-color: #A328D6;
     border: none;
     border-radius: 5px;

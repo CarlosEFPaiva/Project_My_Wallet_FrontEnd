@@ -32,23 +32,33 @@ function checkRawRegistrationValues(signUpData) {
     return true;
 }
 
-function ValidateAndSendSignUpValues(signUpData, browsingHistory) {
+function ValidateAndSendSignUpValues(event, signUpData, setIsContactingServer, browsingHistory) {
+    event.preventDefault();
     if (checkRawRegistrationValues(signUpData)) {
-        const result = postSignUpData(signUpData);
-        if (result.status === 409) {
-            sendErrorAlert("Parece que já está cadastrado! Tente cadastrar outro email ou vá para a tela de login");
-            return
-        };
-        if (result.status === 500) {
-            sendErrorAlert("Parece que houve um problema no servidor! Tente novamente mais tarde");
-            return
-        };
-        sendSuccessAlert("Seu cadastro foi realizado com sucesso!")
-        .then((result) => {
-            if (result.isConfirmed) {
+        setIsContactingServer(true);
+        postSignUpData(signUpData)
+        .then (async res => {
+            setIsContactingServer(false);
+            const alert = await sendSuccessAlert("Seu cadastro foi realizado com sucesso!")
+            if (alert.isConfirmed) {
                 browsingHistory.push("/");
             }
-          })
+        })
+        .catch( error => {
+            setIsContactingServer(false);
+            if (!error.response || error.response.status === 500) {
+                sendErrorAlert("Parece que houve um problema no servidor! Tente novamente mais tarde");
+                return
+            };
+            if (error.response.status === 409) {
+                sendErrorAlert("Parece que este email já está cadastrado! Tente cadastrar outro email ou vá para a tela de login");
+                return
+            };
+            if (error.response.status === 400) {
+                sendErrorAlert("Parece que houve um erro de validação pelo servidor!");
+                return
+            };
+        })
     }
 }
 

@@ -2,10 +2,10 @@ import PageTitle from "../../components/PageTitle";
 import NewEntryButton from "./elements/NewEntryButton";
 import EntriesTable from "./elements/EntriesTable";
 import LogOutButton from "./elements/LogOutButton";
+import { LoadingSpinner } from "../../Utils/External Libs/loaderSpinnerUtils";
 
 import userDataContext from "../../contexts/userDataContext";
-import { adjustStateObject } from "../../Utils/StateObjectFunctions";
-import { getUserData } from "../../Utils/External Libs/axiosUtils";
+import { moveToSignInPage, getAndSaveUserData } from "./HomeScreenFunctions";
 
 import { useContext, useEffect } from "react";
 import { useHistory } from "react-router";
@@ -13,21 +13,32 @@ import styled from "styled-components";
 
 export default function Homescreen() {
     const {userData, setUserData} = useContext(userDataContext);
-    const browisingHistory = useHistory();
+    const browsingHistory = useHistory();
 
     useEffect( () => {
-        const entries = getUserData(userData.id);
-        adjustStateObject(userData, setUserData, "entries", entries);
+        if (!userData.token) {
+            moveToSignInPage(browsingHistory);
+        } else {
+            getAndSaveUserData(userData, setUserData, browsingHistory);
+        }
     }, []);
 
+    if(!userData.name) {
+        return(
+            <Wrapper>
+                <LoadingSpinner />
+            </Wrapper>
+        );
+    }
+    
     return (
         <Wrapper>
             <PageTitle> Olá, {userData.name} </PageTitle>
             <LogOutButton />
             <EntriesTable />
             <Buttons>
-                <NewEntryButton type = "deposit" onClick = { () => browisingHistory.push("/new-deposit") }/>
-                <NewEntryButton type = "withdraw" onClick = { () => browisingHistory.push("/new-withdraw") }/>
+                <NewEntryButton type = "deposit" onClick = { () => browsingHistory.push("/new-deposit") }/>
+                <NewEntryButton type = "withdraw" onClick = { () => browsingHistory.push("/new-withdraw") }/>
             </Buttons>
         </Wrapper>
     );

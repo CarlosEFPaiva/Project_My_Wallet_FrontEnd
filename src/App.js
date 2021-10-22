@@ -8,12 +8,14 @@ import NewEntry from "./pages/NewEntry/NewEntry";
 
 import UserDataContext from "./contexts/userDataContext";
 import ContactServerContext from "./contexts/ContactServerContext";
+import { getTokenFromLocalStorage } from "./Utils/LocalStorageUtils";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 
+
 export default function App() {
-  const [userData, setUserData] = useState({id: 1, name: "Carlos", token: "", entries:[]});
+  const [userData, setUserData] = useState({name: "", token: getTokenFromLocalStorage(), entries:[]});
   const [isContactingServer, setIsContactingServer] = useState(false);
 
   return (

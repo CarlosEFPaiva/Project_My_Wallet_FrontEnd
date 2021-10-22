@@ -1,22 +1,21 @@
 import UserDataContext from "../../../contexts/userDataContext";
-import { centsToReais } from "../../../Utils/TextUtils";
+import { centsToReais, formatDate } from "../../../Utils/TextUtils";
 
 import { useContext } from "react";
 import styled from "styled-components";
 
 export default function ListOfItems() {
     const {userData} = useContext(UserDataContext);
-    const totalBalance = 
-        userData.entries
-            .map( ({value, type}) => type === "deposit" ? value : -1*value )
-            .reduce( (previous, current) => current + previous );
+    const totalBalance = userData.entries
+        .map( ({value, type}) => type === 1 ? value : -1*value )
+        .reduce( (previous, current) => current + previous );
 
     return (
         <Wrapper>
             <List>
                 {userData.entries.map( ({date, description, type, value}, index) => 
                     <SingleLine key = {index} >
-                        <Date> {date} </Date>
+                        <Date> {formatDate(date)} </Date>
                         <Item>
                             {description}
                         </Item>
@@ -25,8 +24,8 @@ export default function ListOfItems() {
                 )}
             </List>
             <Total positive = {totalBalance >= 0}>
-                Total
-                <span>{centsToReais(totalBalance)}</span>
+                Saldo
+                <span>{centsToReais(totalBalance, true)}</span>
             </Total>
         </Wrapper>
     );
@@ -65,11 +64,12 @@ const Item = styled.div`
     margin-left: 8px;
     display: flex;
     overflow: scroll;
+    white-space: nowrap;
 `
 
 const Price = styled.span`
     margin-left: 8px;
-    color: ${ ({type}) => type === "withdraw" ? "#C70000" : "#03AC00" };
+    color: ${ ({type}) => type === 0 ? "#C70000" : "#03AC00" };
 `
 
 const Total = styled.div`

@@ -3,16 +3,17 @@ import Input from "../../components/Input";
 import RectangularButton from "../../components/RectangularButton";
 import UnderButtonMessage from "../../components/UnderButtonMessage";
 
+import ContactServerContext from "../../contexts/ContactServerContext";
 import { adjustStateObject } from "../../Utils/StateObjectFunctions";
 import { ValidateAndSendSignUpValues } from "./SignUpFunctions";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
 export default function SignUpPage() {
     const [signUpData, setSignUpData] = useState({ name:"", email:"", password: "", confirmPassword:"" });
-    const isLoading = false;
+    const { isContactingServer, setIsContactingServer } = useContext(ContactServerContext);
     const inputs = [
         { placeholder: "Nome", type: "text", atribute: "name", value: signUpData.name },
         { placeholder: "E-mail", type: "text", atribute: "email", value: signUpData.email },
@@ -24,21 +25,23 @@ export default function SignUpPage() {
     return (
         <Wrapper>
             <AppTitle />
-            {inputs.map( ({ placeholder, type, atribute, value }, index) => 
-                <Input 
-                    key = { index }
-                    placeholder = { placeholder }
-                    value = { value }
-                    onChange = { e => adjustStateObject(signUpData, setSignUpData, atribute, e.target.value )}
-                    type = { type }
-                    disabled = { isLoading }
+            <form onSubmit = { (event) => ValidateAndSendSignUpValues(event, signUpData, setIsContactingServer, browsingHistory) }>
+                {inputs.map( ({ placeholder, type, atribute, value }, index) => 
+                    <Input 
+                        key = { index }
+                        placeholder = { placeholder }
+                        value = { value }
+                        onChange = { e => adjustStateObject(signUpData, setSignUpData, atribute, e.target.value )}
+                        type = { type }
+                        disabled = { isContactingServer }
+                    />
+                )}
+                <RectangularButton 
+                    text = { "Cadastrar" }
+                    isLoading = { isContactingServer }
+                    type = "submit"
                 />
-            )}
-            <RectangularButton 
-                text = { "Cadastrar" }
-                isLoading = { isLoading }
-                onClick = { () =>  ValidateAndSendSignUpValues(signUpData, browsingHistory) }
-            />
+            </form>
             <UnderButtonMessage 
                 text = "Já tem uma conta? Entre agora!"
                 onClick = { () => browsingHistory.push("/") }

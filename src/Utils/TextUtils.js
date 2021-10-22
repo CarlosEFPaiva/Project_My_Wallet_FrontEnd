@@ -1,7 +1,10 @@
-function centsToReais(moneyInCents) {
-    const integer = Math.trunc(moneyInCents / 100);
-    const cents = String(moneyInCents % 100);
-    return `${integer},${cents.length === 2 ? cents : cents + "0"}`
+function centsToReais(moneyInCents, showNegative) {
+    const absoluteValue = Math.abs(moneyInCents);
+    const isNegative = moneyInCents !== absoluteValue;
+    const integer = Math.trunc(absoluteValue / 100);
+    const rawCents = String(absoluteValue % 100);
+    const cents = rawCents.length === 2 ? rawCents : rawCents + "0"
+    return `${(showNegative && isNegative) ? "-" : ""} ${integer},${cents}`
 }
 
 function reaisToCents(moneyinReais) {
@@ -19,8 +22,16 @@ function autoCompleteCurrencyValue(value) {
     return `${integer}.${cents.length === 2 ? cents : cents + "0"}`
 }
 
+function formatDate(stringDate) {
+    const date = new Date(stringDate);
+    const dayOfMonth = date.getDate() >= 10 ? date.getDate() : "0" + date.getDate(); 
+    const month = date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : "0" + (date.getMonth() + 1); 
+    return dayOfMonth + "/" + month;
+}
+
 export {
     centsToReais,
     autoCompleteCurrencyValue,
-    reaisToCents
+    reaisToCents,
+    formatDate
 }

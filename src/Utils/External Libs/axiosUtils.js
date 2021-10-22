@@ -1,21 +1,30 @@
-import { MockLoginTable, MockUserTable } from "../../mocks/LoginData"
+import axios from "axios";
+
+const URL = "http://localhost:4000";
+
+function createConfig(userToken) {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${userToken}`
+        }
+    }
+    return config;
+}
 
 function postSignUpData(signUpData) {
-    if (MockLoginTable.some( ({email}) => email = signUpData.email)) {
-        return {status:409, data: false};
-    }
-    return {status:201}
+    return axios.post(`${URL}/sign-up`, signUpData);
 }
 
 function postSignInData(SignInData) {
-
+    return axios.post(`${URL}/sign-in`, SignInData);
 }
 
-function getUserData(id) {
-    return MockUserTable;
+function getUserData(userToken) {
+    return axios.get(`${URL}/entries`,createConfig(userToken));
 }
 
 export {
     postSignUpData,
+    postSignInData,
     getUserData,
 }

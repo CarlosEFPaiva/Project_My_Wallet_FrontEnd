@@ -1,4 +1,4 @@
-import PageTitle from "../../components/PageTitle";
+import UserGreetings from "./elements/UserGreetings";
 import NewEntryButton from "./elements/NewEntryButton";
 import EntriesTable from "./elements/EntriesTable";
 import LogOutButton from "./elements/LogOutButton";
@@ -34,7 +34,7 @@ export default function Homescreen() {
     
     return (
         <Wrapper>
-            <PageTitle> Olá, {userData.name} </PageTitle>
+            <UserGreetings> Olá, {userData.name.split(" ")[0]} </UserGreetings>
             <LogOutButton onClick = { () => confirmAndLogout(browsingHistory, userData, setUserData)} />
             <EntriesTable />
             <Buttons>
@@ -51,7 +51,6 @@ const Wrapper = styled.section`
     height: calc(100vh - 40px);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
 `
 

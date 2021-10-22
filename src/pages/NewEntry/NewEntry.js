@@ -8,8 +8,9 @@ import UserDataContext from "../../contexts/userDataContext";
 import { adjustStateObject } from "../../Utils/StateObjectFunctions";
 import { autoCompleteCurrencyValue } from "../../Utils/CurrencyAndDateUtils";
 import { ValidateAndSendEntryValues } from "./NewEntryFunctions";
+import { moveToSignInPage } from "../../Utils/BrowsingUtils";
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
@@ -23,6 +24,12 @@ export default function NewEntry({type}) {
         { placeholder: "Descrição", type: "text", atribute: "description", value: newEntry.description },
     ];
     const browsingHistory = useHistory();
+
+    useEffect( () => {
+        if (!userData.token) {
+            moveToSignInPage(browsingHistory);
+        }
+    }, []);
 
     return (
         <Wrapper>

@@ -13,13 +13,16 @@ function reaisToCents(moneyinReais) {
 }
 
 function autoCompleteCurrencyValue(value) {
+    if (value[0] === "-") {
+        return "0.00"
+    }
     const moneyInCents = reaisToCents(value);
     const integer = Math.trunc(moneyInCents / 100);
     const cents = String(moneyInCents % 100);
     if (integer === 0) {
-        return cents;
+        return cents.length === 2 ? "0." + cents : "0.0" + cents;
     }
-    return `${integer}.${cents.length === 2 ? cents : cents + "0"}`
+    return `${integer}.${cents.length === 2 ? cents : "0" + cents}`
 }
 
 function formatDate(stringDate) {

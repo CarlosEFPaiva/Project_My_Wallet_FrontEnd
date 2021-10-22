@@ -1,7 +1,7 @@
 import { sendErrorAlert, sendConfirmAlert } from "../../Utils/External Libs/sweetAlertUtils";
-import { getUserData } from "../../Utils/External Libs/axiosUtils";
+import { getUserData } from "../../Utils/External Libs/service";
 import { adjustStateObject } from "../../Utils/StateObjectFunctions";
-import { clearLocalStorage } from "../../Utils/LocalStorageUtils";
+import { logout } from "../../Utils/BrowsingUtils";
 
 function getAndSaveUserData(userData, setUserData, browsingHistory) {
     getUserData(userData.token)
@@ -11,22 +11,19 @@ function getAndSaveUserData(userData, setUserData, browsingHistory) {
     .catch(async error => {
         const alert = await sendErrorAlert("Oh não! parece que houve um erro com o servidor.. Por favor, faça login novamente");
         if (alert.isConfirmed) {
-            clearLocalStorage()
-            browsingHistory.push("/");
+            logout(browsingHistory)
         }
     })
 }
 
-async function Logout(browsingHistory) {
+async function confirmAndLogout(browsingHistory) {
     const alert = await sendConfirmAlert("Deseja realmente sair?", "Sair");
     if (alert.isConfirmed) {
-        clearLocalStorage();
-        browsingHistory.push("/")
+        logout(browsingHistory)
     }
 }
 
-
 export {
     getAndSaveUserData,
-    Logout
+    confirmAndLogout,
 }

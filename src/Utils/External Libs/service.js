@@ -23,8 +23,13 @@ function getUserData(userToken) {
     return axios.get(`${URL}/entries`,createConfig(userToken));
 }
 
+function postNewEntry(userToken, newEntry) {
+    return axios.post(`${URL}/entries`, newEntry, createConfig(userToken));
+}
+
 export {
     postSignUpData,
     postSignInData,
     getUserData,
+    postNewEntry
 }

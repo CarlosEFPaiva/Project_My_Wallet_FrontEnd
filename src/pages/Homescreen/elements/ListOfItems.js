@@ -1,5 +1,5 @@
 import UserDataContext from "../../../contexts/userDataContext";
-import { centsToReais, formatDate } from "../../../Utils/TextUtils";
+import { centsToReais, formatDate } from "../../../Utils/CurrencyAndDateUtils";
 
 import { useContext } from "react";
 import styled from "styled-components";

@@ -1,5 +1,5 @@
 import { sendErrorAlert } from "../../Utils/External Libs/sweetAlertUtils";
-import { postSignInData } from "../../Utils/External Libs/axiosUtils";
+import { postSignInData } from "../../Utils/External Libs/service";
 import { saveTokenInLocalStorage } from "../../Utils/LocalStorageUtils";
 import { adjustStateObject } from "../../Utils/StateObjectFunctions";
 

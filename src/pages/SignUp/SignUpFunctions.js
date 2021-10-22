@@ -1,5 +1,5 @@
 import { sendErrorAlert, sendSuccessAlert } from "../../Utils/External Libs/sweetAlertUtils";
-import { postSignUpData } from "../../Utils/External Libs/axiosUtils";
+import { postSignUpData } from "../../Utils/External Libs/service";
 
 function checkRawRegistrationValues(signUpData) {
     const {

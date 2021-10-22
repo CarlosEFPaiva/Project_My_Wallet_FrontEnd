@@ -8,7 +8,7 @@ import UserDataContext from "../../contexts/userDataContext";
 import { ValidateAndSendSignIn } from "./SignInFunctions";
 import { adjustStateObject } from "../../Utils/StateObjectFunctions";
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
@@ -22,6 +22,13 @@ export default function SignInPage() {
         { placeholder: "Senha", type: "password", atribute: "password", value: signInData.password },
     ];
     const browsingHistory = useHistory();
+
+    useEffect( () => {
+        if (userData.token) {
+            console.log("hehe")
+            browsingHistory.push("/homescreen");
+        }
+    }, []);
 
     return (
         <Wrapper>

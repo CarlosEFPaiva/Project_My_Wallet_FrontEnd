@@ -18,7 +18,7 @@ export default function Homescreen() {
 
     useEffect( () => {
         if (!userData.token) {
-            moveToSignInPage(browsingHistory);
+            moveToSignInPage(browsingHistory, userData, setUserData);
         } else {
             getAndSaveUserData(userData, setUserData, browsingHistory);
         }
@@ -35,7 +35,7 @@ export default function Homescreen() {
     return (
         <Wrapper>
             <PageTitle> Olá, {userData.name} </PageTitle>
-            <LogOutButton onClick = { () => confirmAndLogout(browsingHistory)} />
+            <LogOutButton onClick = { () => confirmAndLogout(browsingHistory, userData, setUserData)} />
             <EntriesTable />
             <Buttons>
                 <NewEntryButton type = "deposit" onClick = { () => browsingHistory.push("/new-deposit") }/>

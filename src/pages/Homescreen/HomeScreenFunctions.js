@@ -11,15 +11,15 @@ function getAndSaveUserData(userData, setUserData, browsingHistory) {
     .catch(async error => {
         const alert = await sendErrorAlert("Oh não! parece que houve um erro com o servidor.. Por favor, faça login novamente");
         if (alert.isConfirmed) {
-            logout(browsingHistory)
+            logout(browsingHistory, userData, setUserData)
         }
     })
 }
 
-async function confirmAndLogout(browsingHistory) {
+async function confirmAndLogout(browsingHistory, userData, setUserData) {
     const alert = await sendConfirmAlert("Deseja realmente sair?", "Sair");
     if (alert.isConfirmed) {
-        logout(browsingHistory)
+        logout(browsingHistory, userData, setUserData)
     }
 }
 

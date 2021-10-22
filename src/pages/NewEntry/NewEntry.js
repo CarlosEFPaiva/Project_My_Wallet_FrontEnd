@@ -17,7 +17,7 @@ import styled from "styled-components";
 
 export default function NewEntry({type}) {
     const [newEntry, setNewEntry] = useState({ type: type, value:"", description:"" });
-    const { userData } = useContext(UserDataContext);
+    const { userData, setUserData } = useContext(UserDataContext);
     const {isContactingServer, setIsContactingServer} = useContext(ContactServerContext);
     const inputs = [
         { placeholder: "Valor", type: "number", atribute: "value", value: newEntry.value},
@@ -27,14 +27,14 @@ export default function NewEntry({type}) {
 
     useEffect( () => {
         if (!userData.token) {
-            moveToSignInPage(browsingHistory);
+            moveToSignInPage(browsingHistory, userData, setUserData);
         }
     }, []);
 
     return (
         <Wrapper>
             <PageTitle> {type === "deposit" ? "Nova Entrada" : "Nova Saída"} </PageTitle>
-            <form onSubmit = { event => ValidateAndSendEntryValues(event, newEntry, userData.token, setIsContactingServer, browsingHistory) } >
+            <form onSubmit = { event => ValidateAndSendEntryValues(event, newEntry, userData, setUserData, setIsContactingServer, browsingHistory) } >
                 {inputs.map( ({ placeholder, type, atribute, value }, index) => 
                     <Input 
                         key = { index }
@@ -65,7 +65,6 @@ export default function NewEntry({type}) {
         </Wrapper>
     );
 }
-
 
 const Wrapper = styled.section`
     width: 100%;

@@ -24,7 +24,7 @@ function areEntryInputsValid({description, value}) {
 
 }
 
-async function ValidateAndSendEntryValues(event, newEntry, userToken, setIsContactingServer, browsingHistory) {
+async function ValidateAndSendEntryValues(event, newEntry, userData, setUserData, setIsContactingServer, browsingHistory) {
     event.preventDefault();
 
     const { description } = newEntry;
@@ -35,7 +35,7 @@ async function ValidateAndSendEntryValues(event, newEntry, userToken, setIsConta
         if (confirmation.isConfirmed) {
             const body = { description, value, type };
             setIsContactingServer(true);
-            postNewEntry(userToken, body)
+            postNewEntry(userData.token, body)
             .then( async res => {
                 setIsContactingServer(false);
                 const alert = await sendSuccessAlert(`Sua ${type ? "entrada" : "saída"} foi enviada com sucesso!`);
@@ -48,13 +48,13 @@ async function ValidateAndSendEntryValues(event, newEntry, userToken, setIsConta
                 if (!error.response || error.response.status === 500) {
                     const alert = await sendErrorAlert("Oh não! parece que houve um erro com o servidor.. Por favor, faça login novamente");
                     if (alert.isConfirmed) {
-                        return logout(browsingHistory)
+                        return logout(browsingHistory, userData, setUserData)
                     }
                 }
                 if (error.response.status === 401 || error.response.status === 404) {
                     const alert = await sendErrorAlert("Oh não! Parece que houve um erro com o seu login.. Por favor, faça login novamente");
                     if (alert.isConfirmed) {
-                        return logout(browsingHistory)
+                        return logout(browsingHistory, userData, setUserData)
                     }
                 }
                 if (error.response.status === 400) {

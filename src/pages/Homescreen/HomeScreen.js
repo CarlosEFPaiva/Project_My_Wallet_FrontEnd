@@ -5,7 +5,8 @@ import LogOutButton from "./elements/LogOutButton";
 import { LoadingSpinner } from "../../Utils/External Libs/loaderSpinnerUtils";
 
 import userDataContext from "../../contexts/userDataContext";
-import { moveToSignInPage, getAndSaveUserData } from "./HomeScreenFunctions";
+import { getAndSaveUserData, Logout } from "./HomeScreenFunctions";
+import { moveToSignInPage } from "../../Utils/BrowsingUtils";
 
 import { useContext, useEffect } from "react";
 import { useHistory } from "react-router";
@@ -34,7 +35,7 @@ export default function Homescreen() {
     return (
         <Wrapper>
             <PageTitle> Olá, {userData.name} </PageTitle>
-            <LogOutButton />
+            <LogOutButton onClick = { () => Logout(browsingHistory)} />
             <EntriesTable />
             <Buttons>
                 <NewEntryButton type = "deposit" onClick = { () => browsingHistory.push("/new-deposit") }/>

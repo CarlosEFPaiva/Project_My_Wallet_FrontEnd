@@ -1,15 +1,7 @@
-import { sendErrorAlert } from "../../Utils/External Libs/sweetAlertUtils";
+import { sendErrorAlert, sendConfirmAlert } from "../../Utils/External Libs/sweetAlertUtils";
 import { getUserData } from "../../Utils/External Libs/axiosUtils";
 import { adjustStateObject } from "../../Utils/StateObjectFunctions";
 import { clearLocalStorage } from "../../Utils/LocalStorageUtils";
-
-
-async function moveToSignInPage(browsingHistory) {
-    const alert = await sendErrorAlert("Primeiro faça seu login!");
-    if (alert.isConfirmed) {
-        browsingHistory.push("/");
-    }
-}
 
 function getAndSaveUserData(userData, setUserData, browsingHistory) {
     getUserData(userData.token)
@@ -25,7 +17,16 @@ function getAndSaveUserData(userData, setUserData, browsingHistory) {
     })
 }
 
+async function Logout(browsingHistory) {
+    const alert = await sendConfirmAlert("Deseja realmente sair?", "Sair");
+    if (alert.isConfirmed) {
+        clearLocalStorage();
+        browsingHistory.push("/")
+    }
+}
+
+
 export {
-    moveToSignInPage,
     getAndSaveUserData,
+    Logout
 }

@@ -16,8 +16,18 @@ function sendSuccessAlert(html) {
       })
 }
 
+function sendConfirmAlert(title, buttonText, confirmFunction ) {
+    return Swal.fire({
+        title: title,
+        showCancelButton: true,
+        confirmButtonText: buttonText,
+        cancelButtonText: `Cancelar`,
+      })
+}
+
 
 export {
     sendErrorAlert,
     sendSuccessAlert,
+    sendConfirmAlert
 };

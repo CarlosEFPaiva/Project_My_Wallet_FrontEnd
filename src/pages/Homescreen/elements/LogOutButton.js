@@ -1,9 +1,9 @@
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import styled from "styled-components";
 
-export default function LogOutButton({OnClick}) {
+export default function LogOutButton({onClick}) {
     return (
-        <Button OnClick = {OnClick}>
+        <Button onClick = {onClick}>
             <RiLogoutBoxRLine />
         </Button>
     );

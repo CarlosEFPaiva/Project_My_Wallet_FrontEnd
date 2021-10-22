@@ -25,7 +25,6 @@ export default function SignInPage() {
 
     useEffect( () => {
         if (userData.token) {
-            console.log("hehe")
             browsingHistory.push("/homescreen");
         }
     }, []);

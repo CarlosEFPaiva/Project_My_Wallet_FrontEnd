@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const UserGreetings = styled.span`
     max-width: calc(100% - 36px);
@@ -10,6 +10,6 @@ const UserGreetings = styled.span`
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
-`
+`;
 
 export default UserGreetings;

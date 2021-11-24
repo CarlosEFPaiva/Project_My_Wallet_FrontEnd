@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
-const URL = "http://localhost:4000";
+const URL = 'http://localhost:4000';
 
 function createConfig(userToken) {
     const config = {
         headers: {
-            Authorization: `Bearer ${userToken}`
-        }
-    }
+            Authorization: `Bearer ${userToken}`,
+        },
+    };
     return config;
 }
 
@@ -20,7 +20,7 @@ function postSignInData(SignInData) {
 }
 
 function getUserData(userToken) {
-    return axios.get(`${URL}/entries`,createConfig(userToken));
+    return axios.get(`${URL}/entries`, createConfig(userToken));
 }
 
 function postNewEntry(userToken, newEntry) {
@@ -31,5 +31,5 @@ export {
     postSignUpData,
     postSignInData,
     getUserData,
-    postNewEntry
-}
+    postNewEntry,
+};

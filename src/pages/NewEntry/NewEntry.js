@@ -1,31 +1,30 @@
-import PageTitle from "../../components/PageTitle";
-import Input from "../../components/Input";
-import RectangularButton from "../../components/RectangularButton";
-import UnderButtonMessage from "../../components/UnderButtonMessage";
+import { useHistory } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import ContactServerContext from "../../contexts/ContactServerContext";
-import UserDataContext from "../../contexts/userDataContext";
-import { adjustStateObject } from "../../Utils/StateObjectFunctions";
-import { autoCompleteCurrencyValue } from "../../Utils/CurrencyAndDateUtils";
-import { ValidateAndSendEntryValues } from "./NewEntryFunctions";
-import { moveToSignInPage } from "../../Utils/BrowsingUtils";
+import PageTitle from '../../components/PageTitle';
+import Input from '../../components/Input';
+import RectangularButton from '../../components/RectangularButton';
+import UnderButtonMessage from '../../components/UnderButtonMessage';
 
-import { useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router";
-import styled from "styled-components";
+import contactServerContext from '../../contexts/contactServerContext';
+import UserDataContext from '../../contexts/userDataContext';
+import { adjustStateObject } from '../../utils/stateObjectFunctions';
+import { autoCompleteCurrencyValue } from '../../utils/currencyAndDateUtils';
+import { ValidateAndSendEntryValues } from './NewEntryFunctions';
+import { moveToSignInPage } from '../../utils/browsingUtils';
 
-
-export default function NewEntry({type}) {
-    const [newEntry, setNewEntry] = useState({ type: type, value:"", description:"" });
+export default function NewEntry({ type }) {
+    const [newEntry, setNewEntry] = useState({ type, value: '', description: '' });
     const { userData, setUserData } = useContext(UserDataContext);
-    const {isContactingServer, setIsContactingServer} = useContext(ContactServerContext);
+    const { isContactingServer, setIsContactingServer } = useContext(contactServerContext);
     const inputs = [
-        { placeholder: "Valor", type: "number", atribute: "value", value: newEntry.value},
-        { placeholder: "Descrição", type: "text", atribute: "description", value: newEntry.description },
+        { key: 'NewEntry input 1', placeholder: 'Valor', inputType: 'number', atribute: 'value', value: newEntry.value },
+        { key: 'NewEntry input 2', placeholder: 'Descrição', inputType: 'text', atribute: 'description', value: newEntry.description },
     ];
     const browsingHistory = useHistory();
 
-    useEffect( () => {
+    useEffect(() => {
         if (!userData.token) {
             moveToSignInPage(browsingHistory, userData, setUserData);
         }
@@ -33,34 +32,55 @@ export default function NewEntry({type}) {
 
     return (
         <Wrapper>
-            <PageTitle> {type === "deposit" ? "Nova Entrada" : "Nova Saída"} </PageTitle>
-            <form onSubmit = { event => ValidateAndSendEntryValues(event, newEntry, userData, setUserData, setIsContactingServer, browsingHistory) } >
-                {inputs.map( ({ placeholder, type, atribute, value }, index) => 
-                    <Input 
-                        key = { index }
-                        placeholder = { placeholder }
-                        value = { value }
-                        onChange = { e => 
-                            type === "number" ?
-                            adjustStateObject(newEntry, setNewEntry, atribute, autoCompleteCurrencyValue(e.target.value) ) :
-                            adjustStateObject(newEntry, setNewEntry, atribute, e.target.value)                    
-                        }
-                        type = { type }
-                        disabled = { isContactingServer }
-                        min = {0}
-                        step = "0.01"
-                    />
+            <PageTitle>
+                {type === 'deposit' ? 'Nova Entrada' : 'Nova Saída'}
+            </PageTitle>
+            <form
+                onSubmit={(event) => ValidateAndSendEntryValues(
+                    event,
+                    newEntry,
+                    userData,
+                    setUserData,
+                    setIsContactingServer,
+                    browsingHistory,
                 )}
-                <RectangularButton 
-                    text = { type === "deposit" ? "Salvar Entrada" : "Salvar Saída" }
-                    isLoading = { isContactingServer }
-                    type = "submit"
+            >
+                {inputs.map(({ key, placeholder, inputType, atribute, value }) => (
+                    <Input
+                        key={key}
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={(e) => (
+                            type === 'number' ?
+                                adjustStateObject(
+                                    newEntry,
+                                    setNewEntry,
+                                    atribute,
+                                    autoCompleteCurrencyValue(e.target.value),
+                                ) :
+                                adjustStateObject(
+                                    newEntry,
+                                    setNewEntry,
+                                    atribute,
+                                    e.target.value,
+                                )
+                        )}
+                        type={inputType}
+                        disabled={isContactingServer}
+                        min={0}
+                        step="0.01"
+                    />
+                ))}
+                <RectangularButton
+                    text={type === 'deposit' ? 'Salvar Entrada' : 'Salvar Saída'}
+                    isLoading={isContactingServer}
+                    type="submit"
                 />
             </form>
-            <UnderButtonMessage 
-                text = "Voltar"
-                isLoading = { isContactingServer }
-                onClick = { () => browsingHistory.push("/homescreen") }
+            <UnderButtonMessage
+                text="Voltar"
+                isLoading={isContactingServer}
+                onClick={() => browsingHistory.push('/homescreen')}
             />
         </Wrapper>
     );
@@ -72,4 +92,4 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-`
+`;

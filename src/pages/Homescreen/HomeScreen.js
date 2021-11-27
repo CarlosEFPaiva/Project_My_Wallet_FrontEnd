@@ -26,7 +26,7 @@ export default function Homescreen() {
 
     if (!userData.name) {
         return (
-            <Wrapper>
+            <Wrapper isLoading>
                 <LoadingSpinner />
             </Wrapper>
         );
@@ -55,6 +55,7 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: ${({ isLoading }) => (isLoading ? 'center' : 'flex-start')};
 `;
 
 const Buttons = styled.div`

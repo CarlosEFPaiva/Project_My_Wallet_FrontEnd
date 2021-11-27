@@ -51,7 +51,7 @@ export default function NewEntry({ type }) {
                         placeholder={placeholder}
                         value={value}
                         onChange={(e) => (
-                            type === 'number' ?
+                            inputType === 'number' ?
                                 adjustStateObject(
                                     newEntry,
                                     setNewEntry,

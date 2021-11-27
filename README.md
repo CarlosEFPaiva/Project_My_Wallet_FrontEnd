@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# My Wallet - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About this Project
 
-## Available Scripts
+This project was developed as part of the Driven Web Full-Stack Bootcamp, a 6-month bootcamp where I started my journey as a web developer.
 
-In the project directory, you can run:
+It serves as the front-end for my-wallet-Project -> the back-end of this project can be found [here](https://github.com/CarlosEFPaiva/Project_my_Wallet_Backend).
 
-### `npm start`
+My-Wallet is an app where users can save their spending and income, all saved with their own login information and with a friendly interface.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The code for this project was developed in English, but it's interface is currently in Portuguese.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Functionalities
 
-### `npm test`
+- Create your own login, using the registration screen. It will save your information in a database and allow you to login wherever you want.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Sign in using your email and password, and a homescreen will show your name and all your saved entries and a calculated balance for all entries.
 
-### `npm run build`
+- Add a new spending or income, typing it's value and a description. It will automatically be sent to the database and added to your homescreen.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run this project in the development mode, you'll need to have a basic environment to run a React App.
 
-### `npm run eject`
+- Vercel Deploy: This project can be fully experienced by its Vercel deploy, clicking here.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Run it locally: In order to properly use every feature in this project, it is important to combine it with its backend version. If you plan to run it locally, make sure to clone the back-end and run it as well. The standard port for comunication with the backend is set to 4000 on both projects.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The following scripts are set for better using of the app:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+"start": "REACT_APP_SERVER_URL=https://my-wallet-dev.herokuapp.com react-scripts start",
+"start-local": "REACT_APP_SERVER_URL=http://localhost:4000 react-scripts start",
+"build": "REACT_APP_SERVER_URL=https://my-wallet-dev.herokuapp.com react-scripts build",
+"eject": "react-scripts eject"
 
-## Learn More
+- start -> Will start the app and communicate with the Heroku version of the backend and its proper development database.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- start-local -> Will start the app and communicate with a local version of the backend, which is expected to communicate with a proper database.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- build -> command to make a build version of the project.
 
-### Code Splitting
+- eject -> command to eject a running version of the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Built With
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React](https://reactjs.org/) - Web Framework for javascript
+- [ESlint](https://eslint.org/) - Linter
+- [Axios](https://www.npmjs.com/package/axios) - Promise bases HTTP client
+- [Styled Components](https://www.npmjs.com/package/styled-components) - Creates easily manipulated components for React
+- [React Icons](https://www.npmjs.com/package/react-icons) - Access to a variety of icons to be easily implemented
+- [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) - Easily creates components to be used while other components are loaded
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) - Package for setting routes and the communication between them.
+- [Sweet Alert 2](https://www.npmjs.com/package/sweetalert2) - Easily creates customizable responses, alerts and pop-ups for browser.

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useState } from 'react';
 
-import GlobalReset from './assets/CSS Components/GlobalReset';
-import GlobalStyles from './assets/CSS Components/GlobalStyles';
+import GlobalReset from './assets/cssComponents/GlobalReset';
+import GlobalStyles from './assets/cssComponents/GlobalStyles';
 
 import SignInPage from './pages/SignIn/SignIn';
 import SignUpPage from './pages/SignUp/SignUp';

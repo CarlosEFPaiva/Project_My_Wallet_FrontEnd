@@ -32,11 +32,6 @@ To run this project in the development mode, you'll need to have a basic environ
 
 The following scripts are set for better using of the app:
 
-"start": "REACT_APP_SERVER_URL=https://my-wallet-dev.herokuapp.com react-scripts start",
-"start-local": "REACT_APP_SERVER_URL=http://localhost:4000 react-scripts start",
-"build": "REACT_APP_SERVER_URL=https://my-wallet-dev.herokuapp.com react-scripts build",
-"eject": "react-scripts eject"
-
 - start -> Will start the app and communicate with the Heroku version of the backend and its proper development database.
 
 - start-local -> Will start the app and communicate with a local version of the backend, which is expected to communicate with a proper database.

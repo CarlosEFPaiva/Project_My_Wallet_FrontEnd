@@ -2,13 +2,14 @@ import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
+import userDataContext from '../../contexts/userDataContext';
+
 import UserGreetings from './elements/UserGreetings';
 import NewEntryButton from './elements/NewEntryButton';
 import EntriesTable from './elements/EntriesTable';
 import LogOutButton from './elements/LogOutButton';
 import { LoadingSpinner } from '../../utils/externalLibs/loaderSpinnerUtils';
 
-import userDataContext from '../../contexts/userDataContext';
 import { getAndSaveUserData, confirmAndLogout } from './HomeScreenFunctions';
 import { moveToSignInPage } from '../../utils/browsingUtils';
 

@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import ListOfItems from './ListOfItems';
 
 import UserDataContext from '../../../contexts/userDataContext';
+
+import ListOfItems from './ListOfItems';
 
 export default function EntriesTable() {
     const { userData } = useContext(UserDataContext);

@@ -2,13 +2,14 @@ import { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
+import contactServerContext from '../../contexts/contactServerContext';
+import UserDataContext from '../../contexts/userDataContext';
+
 import AppTitle from '../../components/AppTitle';
 import Input from '../../components/Input';
 import RectangularButton from '../../components/RectangularButton';
 import UnderButtonMessage from '../../components/UnderButtonMessage';
 
-import contactServerContext from '../../contexts/contactServerContext';
-import UserDataContext from '../../contexts/userDataContext';
 import { ValidateAndSendSignIn } from './SignInFunctions';
 import { adjustStateObject } from '../../utils/stateObjectFunctions';
 

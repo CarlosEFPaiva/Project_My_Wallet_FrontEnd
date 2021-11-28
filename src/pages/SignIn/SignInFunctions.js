@@ -47,12 +47,8 @@ function ValidateAndSendSignIn(
                     sendErrorAlert('Parece que houve um problema no servidor! Tente novamente mais tarde');
                     return;
                 }
-                if (error.response.status === 404) {
-                    sendErrorAlert('Parece que este email não está cadastrado! Confira se você digitou corretamente ou vá para a página de cadastro');
-                    return;
-                }
                 if (error.response.status === 401) {
-                    sendErrorAlert('Sua senha está incorreta! Lembre-se de que ela contém no mínimo:<br>8 caracteres<br>1 letra maiúscula<br>1 letra minúscula<br>1 número<br>1 caracter especial (@$!%*?&)');
+                    sendErrorAlert('Seu email e/ou senha estão incorretos! Lembre-se de que a senha contém no mínimo:<br>8 caracteres<br>1 letra maiúscula<br>1 letra minúscula<br>1 número<br>1 caracter especial (@$!%*?&)');
                     return;
                 }
                 if (error.response.status === 400) {

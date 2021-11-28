@@ -1,5 +1,5 @@
-import { RiLogoutBoxRLine } from 'react-icons/ri';
 import styled from 'styled-components';
+import { RiLogoutBoxRLine } from 'react-icons/ri';
 
 export default function LogOutButton({ onClick }) {
     return (

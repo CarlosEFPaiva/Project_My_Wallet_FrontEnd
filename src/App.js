@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useState } from 'react';
 
+import UserDataContext from './contexts/userDataContext';
+import contactServerContext from './contexts/contactServerContext';
+
 import GlobalReset from './assets/cssComponents/GlobalReset';
 import GlobalStyles from './assets/cssComponents/GlobalStyles';
 
@@ -9,8 +12,6 @@ import SignUpPage from './pages/SignUp/SignUp';
 import Homescreen from './pages/Homescreen/HomeScreen';
 import NewEntry from './pages/NewEntry/NewEntry';
 
-import UserDataContext from './contexts/userDataContext';
-import contactServerContext from './contexts/contactServerContext';
 import { getTokenFromLocalStorage } from './utils/localStorageUtils';
 
 export default function App() {

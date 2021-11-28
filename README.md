@@ -6,7 +6,7 @@ This project was developed as part of the Driven Web Full-Stack Bootcamp, a 6-mo
 
 It serves as the front-end for my-wallet-Project -> the back-end of this project can be found [here](https://github.com/CarlosEFPaiva/Project_my_Wallet_Backend).
 
-My-Wallet is an app where users can save their spending and income, all saved with their own login information and with a friendly interface.
+My-Wallet is an app where users can save their spending and income, all saved with their own login information and with a friendly interface. Its layout was developed exclusive for mobile applications.
 
 The code for this project was developed in English, but it's interface is currently in Portuguese.
 

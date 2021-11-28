@@ -1,20 +1,20 @@
-import ListOfItems from "./ListOfItems";
+import { useContext } from 'react';
+import styled from 'styled-components';
+import ListOfItems from './ListOfItems';
 
-import UserDataContext from "../../../contexts/userDataContext";
-
-import { useContext } from "react";
-import styled from "styled-components";
+import UserDataContext from '../../../contexts/userDataContext';
 
 export default function EntriesTable() {
-    const {userData} = useContext(UserDataContext);
+    const { userData } = useContext(UserDataContext);
     return (
         <Wrapper>
             {
-                userData.entries.length === 0 ?
-                <NoEntries>
-                    Não há registros de entrada ou saída
-                </NoEntries> :
-                <ListOfItems />
+                userData.entries.length === 0 ? (
+                    <NoEntries>
+                        Não há registros de entrada ou saída
+                    </NoEntries>
+                ) :
+                    <ListOfItems />
             }
         </Wrapper>
     );
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     overflow-y: hidden;
-`
+`;
 
 const NoEntries = styled.span`
     width: 100%;
@@ -38,4 +38,4 @@ const NoEntries = styled.span`
     font-size: 20px;
     color: #868686;
     text-align: center;
-`
+`;

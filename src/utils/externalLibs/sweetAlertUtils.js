@@ -1,33 +1,32 @@
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 function sendErrorAlert(html) {
     return Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        html: html,
-      })
+        html,
+    });
 }
 
 function sendSuccessAlert(html) {
     return Swal.fire({
         title: 'Beleza!',
-        html: html,
+        html,
         icon: 'success',
-      })
+    });
 }
 
-function sendConfirmAlert(title, buttonText, confirmFunction ) {
+function sendConfirmAlert(title, buttonText) {
     return Swal.fire({
-        title: title,
+        title,
         showCancelButton: true,
         confirmButtonText: buttonText,
-        cancelButtonText: `Cancelar`,
-      })
+        cancelButtonText: 'Cancelar',
+    });
 }
-
 
 export {
     sendErrorAlert,
     sendSuccessAlert,
-    sendConfirmAlert
+    sendConfirmAlert,
 };

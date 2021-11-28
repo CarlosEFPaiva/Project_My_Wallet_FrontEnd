@@ -1,20 +1,20 @@
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { AiOutlineMinusCircle } from "react-icons/ai";
+import { IoIosAddCircleOutline } from 'react-icons/io';
+import { AiOutlineMinusCircle } from 'react-icons/ai';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export default function NewEntryButton({type, onClick}) {
+export default function NewEntryButton({ type, onClick }) {
     return (
-        <Wrapper onClick = { onClick } >
+        <Wrapper onClick={onClick}>
             {
-                type === "deposit" ?
-                <IoIosAddCircleOutline /> :
-                <AiOutlineMinusCircle />
+                type === 'deposit' ?
+                    <IoIosAddCircleOutline /> :
+                    <AiOutlineMinusCircle />
             }
             <span>
                 Nova
                 <br />
-                {type === "deposit" ? "Entrada" : "Saída"}
+                {type === 'deposit' ? 'Entrada' : 'Saída'}
             </span>
         </Wrapper>
     );
@@ -39,4 +39,4 @@ const Wrapper = styled.button`
     }
 
 
-`
+`;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export default function AppTitle() {
     return (
@@ -8,10 +8,9 @@ export default function AppTitle() {
     );
 }
 
-
 const Wrapper = styled.span`
     font-family: 'Saira Stencil One', cursive;
     font-weight: 400;
     font-size: 32px;
     margin-bottom: 28px;
-`
+`;

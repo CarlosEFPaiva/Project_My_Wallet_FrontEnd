@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export default function UnderButtonMessage({text, isLoading, onClick}) {
+export default function UnderButtonMessage({ text, isLoading, onClick }) {
     return (
-        <Wrapper disabled = {isLoading} onClick = { onClick }>
+        <Wrapper disabled={isLoading} onClick={onClick}>
             {text}
         </Wrapper>
     );
@@ -13,4 +13,4 @@ const Wrapper = styled.button`
     font-weight: 700;
     font-size: 15px;
     color: #FFFFFF;
-`
+`;

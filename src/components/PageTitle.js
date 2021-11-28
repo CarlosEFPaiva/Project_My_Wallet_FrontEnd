@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const PageTitle = styled.span`
     width: 100%;
@@ -6,6 +6,6 @@ const PageTitle = styled.span`
     font-weight: 700;
     margin-bottom: 24px;
     display: inline-block;
-`
+`;
 
 export default PageTitle;

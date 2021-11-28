@@ -1,18 +1,17 @@
-import { LoadingDots } from "../Utils/External Libs/loaderSpinnerUtils";
+import styled from 'styled-components';
 
-import styled from "styled-components";
+import { LoadingDots } from '../utils/externalLibs/loaderSpinnerUtils';
 
-export default function RectangularButton({text, isLoading, onClick}) {
+export default function RectangularButton({ text, isLoading, onClick }) {
     return (
-        <Wrapper 
-            disabled = { isLoading }
-            onClick = { onClick }
+        <Wrapper
+            disabled={isLoading}
+            onClick={onClick}
         >
             { isLoading ? <LoadingDots /> : text}
         </Wrapper>
     );
 }
-
 
 const Wrapper = styled.button`
     width: 100%;
@@ -26,4 +25,4 @@ const Wrapper = styled.button`
     font-weight: 700;
     font-size: 20px;
     color: #FFFFFF;
-`
+`;

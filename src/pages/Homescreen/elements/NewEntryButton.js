@@ -1,7 +1,6 @@
+import styled from 'styled-components';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { AiOutlineMinusCircle } from 'react-icons/ai';
-
-import styled from 'styled-components';
 
 export default function NewEntryButton({ type, onClick }) {
     return (

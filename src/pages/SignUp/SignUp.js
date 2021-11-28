@@ -2,12 +2,13 @@ import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
+import contactServerContext from '../../contexts/contactServerContext';
+
 import AppTitle from '../../components/AppTitle';
 import Input from '../../components/Input';
 import RectangularButton from '../../components/RectangularButton';
 import UnderButtonMessage from '../../components/UnderButtonMessage';
 
-import contactServerContext from '../../contexts/contactServerContext';
 import { adjustStateObject } from '../../utils/stateObjectFunctions';
 import { ValidateAndSendSignUpValues } from './SignUpFunctions';
 

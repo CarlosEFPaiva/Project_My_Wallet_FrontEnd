@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 
 import UserDataContext from '../../../contexts/userDataContext';
+
 import { centsToReais, formatDate } from '../../../utils/currencyAndDateUtils';
 
 export default function ListOfItems() {

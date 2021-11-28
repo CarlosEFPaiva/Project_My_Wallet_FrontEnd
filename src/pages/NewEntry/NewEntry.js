@@ -2,13 +2,14 @@ import { useHistory } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import contactServerContext from '../../contexts/contactServerContext';
+import UserDataContext from '../../contexts/userDataContext';
+
 import PageTitle from '../../components/PageTitle';
 import Input from '../../components/Input';
 import RectangularButton from '../../components/RectangularButton';
 import UnderButtonMessage from '../../components/UnderButtonMessage';
 
-import contactServerContext from '../../contexts/contactServerContext';
-import UserDataContext from '../../contexts/userDataContext';
 import { adjustStateObject } from '../../utils/stateObjectFunctions';
 import { autoCompleteCurrencyValue } from '../../utils/currencyAndDateUtils';
 import { ValidateAndSendEntryValues } from './NewEntryFunctions';
